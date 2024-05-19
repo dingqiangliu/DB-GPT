@@ -96,7 +96,7 @@ def _parse_table_summary(
     """
     columns = []
     for column in conn.get_columns(table_name):
-        if column.get("comment"):
+        if column.get("comment") and column["name"] != column.get("comment"):
             columns.append(f"{column['name']} ({column.get('comment')})")
         else:
             columns.append(f"{column['name']}")
